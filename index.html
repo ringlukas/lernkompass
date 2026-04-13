@@ -98,7 +98,12 @@
     [data-theme="dark"] .aufg-fach-select,
     [data-theme="dark"] .aufg-date-input,
     [data-theme="dark"] .links-field,
-    [data-theme="dark"] .links-fach-select { background: var(--card-bg); color: var(--text); border-color: var(--border); }
+    [data-theme="dark"] .links-fach-select,
+    [data-theme="dark"] .klausur-input { background: var(--card-bg); color: var(--text); border-color: var(--border); }
+    [data-theme="dark"] .aufg-text-input::placeholder,
+    [data-theme="dark"] .links-field::placeholder,
+    [data-theme="dark"] .klausur-input::placeholder { color: #555568; }
+    [data-theme="dark"] .klausur-input:focus { border-color: var(--blue); }
     /* Draw zones — weicher Hintergrund, nicht pechschwarz */
     [data-theme="dark"] .draw-zone { background-color: #1e1e2a; background-image: radial-gradient(circle, #2e2e40 0.8px, transparent 0.8px); }
     [data-theme="dark"] .draw-empty-hint { color: #444458; }
@@ -205,7 +210,12 @@
       [data-theme="auto"] .aufg-fach-select,
       [data-theme="auto"] .aufg-date-input,
       [data-theme="auto"] .links-field,
-      [data-theme="auto"] .links-fach-select { background: var(--card-bg); color: var(--text); border-color: var(--border); }
+      [data-theme="auto"] .links-fach-select,
+      [data-theme="auto"] .klausur-input { background: var(--card-bg); color: var(--text); border-color: var(--border); }
+      [data-theme="auto"] .aufg-text-input::placeholder,
+      [data-theme="auto"] .links-field::placeholder,
+      [data-theme="auto"] .klausur-input::placeholder { color: #555568; }
+      [data-theme="auto"] .klausur-input:focus { border-color: var(--blue); }
       [data-theme="auto"] .draw-zone { background-color: #1e1e2a; background-image: radial-gradient(circle, #2e2e40 0.8px, transparent 0.8px); }
       [data-theme="auto"] .draw-empty-hint { color: #444458; }
       [data-theme="auto"] #draw-overlay { background: #1a1a26; }
@@ -289,7 +299,7 @@
     }
 
     /* ===== VIEWS ===== */
-    .view { display: none; min-height: 100vh; }
+    .view { display: none; min-height: 100vh; min-height: 100dvh; }
     .view.active { display: block; }
 
     /* LK-View: .app-bar hat position:sticky; top:0 – das reicht für die Kopfzeile */
@@ -431,7 +441,7 @@
     .kern-num { width: 36px; background: linear-gradient(180deg, #004590 0%, var(--blue) 100%); color: white; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border-radius: 0; }
     .kern-concept-input {
       flex: 1; border: none; outline: none; background: #eef4ff;
-      font-size: 15px; font-weight: 700; font-family: var(--font); color: var(--blue);
+      font-size: 16px; font-weight: 700; font-family: var(--font); color: var(--blue);
       padding: 10px 12px; min-height: 44px;
       -webkit-appearance: none;
     }
@@ -486,6 +496,7 @@
     .draw-zone:active { background-color: #f0f4ff; }
     .dz-kern   { min-height: 110px; }
     .dz-big    { min-height: 280px; }
+    .dz-med    { min-height: 160px; }
     .dz-fehler { min-height: 72px; flex: 1; border-radius: 6px; }
     .dz-mini   { min-height: 80px; border-radius: 6px; border: 1px solid var(--gray); background-color: #fafafa; }
     .dz-notizen { min-height: 360px; }
@@ -683,7 +694,7 @@
     #home-search-bar { max-width: 680px; margin: 0 auto; padding: 10px 14px 0; }
     #home-search {
       width: 100%; padding: 11px 18px; border: 1.5px solid rgba(0,0,0,0.08);
-      border-radius: 22px; font-size: 15px; font-family: var(--font);
+      border-radius: 22px; font-size: 16px; font-family: var(--font);
       background: var(--card-bg); color: var(--text); outline: none;
       -webkit-appearance: none; box-shadow: var(--shadow);
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -722,7 +733,7 @@
     .aufg-input-row { display: flex; gap: 8px; align-items: stretch; }
     .aufg-text-input {
       flex: 1; padding: 11px 14px; border: 1.5px solid var(--gray);
-      border-radius: 22px; font-size: 15px; font-family: var(--font);
+      border-radius: 22px; font-size: 16px; font-family: var(--font);
       background: var(--card-bg); outline: none; -webkit-appearance: none;
       box-shadow: var(--shadow); color: var(--text);
     }
@@ -738,7 +749,7 @@
     .aufg-meta-row { display: flex; gap: 8px; margin-top: 8px; }
     .aufg-fach-select, .aufg-date-input {
       flex: 1; padding: 8px 10px; border: 1.5px solid var(--gray);
-      border-radius: 10px; font-size: 13px; font-family: var(--font);
+      border-radius: 10px; font-size: 16px; font-family: var(--font);
       background: var(--card-bg); color: var(--text); outline: none; -webkit-appearance: none;
     }
     .aufg-fach-select:focus, .aufg-date-input:focus { border-color: var(--blue); }
@@ -870,7 +881,7 @@
     }
     .links-field {
       width: 100%; padding: 9px 12px; border: 1.5px solid var(--gray);
-      border-radius: 8px; font-size: 14px; font-family: var(--font);
+      border-radius: 8px; font-size: 16px; font-family: var(--font);
       background: var(--card-bg); color: var(--text); outline: none; -webkit-appearance: none;
       margin-bottom: 6px; display: block;
     }
@@ -878,7 +889,7 @@
     .links-add-row { display: flex; gap: 8px; align-items: center; }
     .links-fach-select {
       flex: 1; padding: 8px 10px; border: 1.5px solid var(--gray);
-      border-radius: 8px; font-size: 13px; font-family: var(--font);
+      border-radius: 8px; font-size: 16px; font-family: var(--font);
       background: var(--card-bg); color: var(--text); outline: none; -webkit-appearance: none;
     }
     .links-submit-btn {
@@ -963,13 +974,14 @@
     /* Content-Bereiche: Textarea (Tastatur) vs. Draw-Zone (Stift) */
     .content-textarea {
       width: 100%; border: none; outline: none; resize: none;
-      font-family: var(--font); font-size: 15px; line-height: 1.55;
+      font-family: var(--font); font-size: 16px; line-height: 1.5;
       padding: 10px 12px; background: transparent; color: var(--text);
       -webkit-appearance: none; display: block;
     }
     .content-textarea::placeholder { color: #bbb; font-style: italic; }
     .content-textarea { overflow: hidden; }
     .content-textarea.ta-big    { min-height: 160px; }
+    .content-textarea.ta-med    { min-height: 100px; }
     .content-textarea.ta-kern   { min-height: 60px; }
     .content-textarea.ta-mini   { min-height: 48px; }
     .content-textarea.ta-fehler { min-height: 38px; padding: 6px 10px; }
@@ -1069,7 +1081,7 @@
     .countdown-del:active { color: #e55; }
     .klausur-add-card { background: var(--card-bg, white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px 14px; margin-bottom: 12px; border: 1px solid var(--border, rgba(0,0,0,0.04)); }
     .klausur-add-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .klausur-input { flex: 1; min-width: 120px; padding: 8px 10px; border: 1.5px solid var(--gray); border-radius: 8px; font-size: 13px; font-family: var(--font); background: var(--card-bg, white); color: var(--text); outline: none; -webkit-appearance: none; }
+    .klausur-input { flex: 1; min-width: 120px; padding: 8px 10px; border: 1.5px solid var(--gray); border-radius: 8px; font-size: 16px; font-family: var(--font); background: var(--card-bg, white); color: var(--text); outline: none; -webkit-appearance: none; }
     .klausur-input:focus { border-color: var(--blue); }
 
     /* ===== WEEK VIEW ===== */
@@ -1118,6 +1130,7 @@
         display: flex !important;
         flex-direction: row;
         height: 100vh;
+        height: 100dvh;
         overflow: hidden;
       }
       #editor-sidebar {
@@ -1780,7 +1793,57 @@ const IDB = (() => {
 })();
 
 // ═══════════════════════════════════════════════
-//  BACKUP-ERINNERUNG
+//  STORAGE-PERSISTENZ (iOS/Safari PWA)
+//  Fordert persistenten Speicher an, damit das
+//  Betriebssystem die Daten NICHT opportunistisch
+//  löscht (kein Eviction unter Speicherdruck).
+// ═══════════════════════════════════════════════
+async function requestPersistentStorage() {
+  try {
+    if (!navigator.storage || !navigator.storage.persist) return;
+    const already = await navigator.storage.persisted?.();
+    if (already) { localStorage.setItem('lk_storage_persisted', '1'); return; }
+    const granted = await navigator.storage.persist();
+    if (granted) localStorage.setItem('lk_storage_persisted', '1');
+  } catch (_) { /* still: kein Abbruch */ }
+}
+
+// ═══════════════════════════════════════════════
+//  QUOTA-MONITOR (platform-aware)
+//  iPad/iOS: hardcap ~50 MB → ab 30 MB warnen
+//  Android-Tablet/Laptop: großzügig → ab 100 MB
+// ═══════════════════════════════════════════════
+function isIOSDevice() {
+  const ua = navigator.userAgent || '';
+  // iPad ab iPadOS 13 sendet Mac-UA, daher zusätzlich maxTouchPoints prüfen
+  return /iPad|iPhone|iPod/.test(ua) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+async function checkStorageQuota() {
+  try {
+    if (!navigator.storage || !navigator.storage.estimate) return;
+    const { usage = 0 } = await navigator.storage.estimate();
+    const usageMB = usage / (1024 * 1024);
+    const isIOS = isIOSDevice();
+    const threshold = isIOS ? 30 : 100;
+    const cap       = isIOS ? '~50 MB' : 'mehrere hundert MB';
+    const lastWarn = parseInt(localStorage.getItem('lk_quota_warned') || '0', 10);
+    const daysSinceWarn = (Date.now() - lastWarn) / 86400000;
+    if (usageMB > threshold && daysSinceWarn > 7) {
+      localStorage.setItem('lk_quota_warned', Date.now().toString());
+      setTimeout(() => {
+        alert(`Speicherplatz: ${usageMB.toFixed(1)} MB belegt (Limit auf diesem Gerät: ${cap}).\n\nBitte erstelle jetzt ein Backup und lösche alte Lernkompasse oder Zeichnungen, damit du weiter speichern kannst.`);
+      }, 1000);
+    }
+  } catch (_) { /* ignorieren */ }
+}
+
+// ═══════════════════════════════════════════════
+//  BACKUP-ERINNERUNG (Banner + Modal)
+//  - Banner ab 5 Tagen (Dismiss-Fenster 2 Tage)
+//  - Modal ab 10 Tagen (nicht einfach wegklickbar)
+//  Funktioniert plattform-agnostisch (iOS-PWA, Android, Laptop),
+//  weil Download nur nach direkter User-Geste ausgelöst wird.
 // ═══════════════════════════════════════════════
 function checkBackupReminder() {
   const banner = document.getElementById('backup-banner');
@@ -1789,12 +1852,25 @@ function checkBackupReminder() {
   const daysSince  = (Date.now() - lastExport) / 86400000;
   const dismissed  = parseInt(localStorage.getItem('lk_backup_dismissed') || '0', 10);
   const daysSinceDismiss = (Date.now() - dismissed) / 86400000;
-  if (daysSince > 7 && daysSinceDismiss > 3) {
+
+  // Modal ab 10 Tagen — nur einmal pro Tag
+  if (daysSince > 10) {
+    const lastModal = parseInt(localStorage.getItem('lk_backup_modal_shown') || '0', 10);
+    const hoursSinceModal = (Date.now() - lastModal) / 3600000;
+    if (hoursSinceModal > 20) {
+      localStorage.setItem('lk_backup_modal_shown', Date.now().toString());
+      setTimeout(() => showBackupModal(Math.floor(daysSince), !!lastExport), 600);
+      banner.style.display = 'none';
+      return;
+    }
+  }
+
+  if (daysSince > 5 && daysSinceDismiss > 2) {
     const label = lastExport ? `Letztes Backup: vor ${Math.floor(daysSince)} Tagen` : 'Du hast noch nie ein Backup gemacht';
     banner.style.display = '';
     banner.innerHTML = `<div class="backup-banner-card">
       <span class="backup-banner-icon">🛡</span>
-      <div class="backup-banner-text"><strong>${label}.</strong> Sichere deine Lernkompasse als Backup-Datei — falls das iPad zurückgesetzt wird.</div>
+      <div class="backup-banner-text"><strong>${label}.</strong> Sichere deine Lernkompasse als Backup-Datei — falls das Gerät zurückgesetzt wird.</div>
       <button class="backup-banner-btn" onclick="exportBackup();this.closest('.backup-banner').style.display='none'">Backup</button>
       <button class="backup-banner-dismiss" onclick="dismissBackupBanner()" title="Später">×</button>
     </div>`;
@@ -1805,6 +1881,32 @@ function checkBackupReminder() {
 function dismissBackupBanner() {
   localStorage.setItem('lk_backup_dismissed', Date.now().toString());
   document.getElementById('backup-banner').style.display = 'none';
+}
+
+// ═══════════════════════════════════════════════
+//  BACKUP-MODAL (ab 10 Tagen)
+// ═══════════════════════════════════════════════
+function showBackupModal(days, hadBackup) {
+  if (document.getElementById('backup-modal')) return;
+  const label = hadBackup
+    ? `Dein letztes Backup ist ${days} Tage her.`
+    : `Du hast noch nie ein Backup gemacht.`;
+  const m = document.createElement('div');
+  m.id = 'backup-modal';
+  m.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;';
+  m.innerHTML = `
+    <div style="background:var(--card-bg,white);color:var(--text);max-width:420px;width:100%;border-radius:16px;padding:28px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.35);font-family:var(--font);">
+      <div style="font-size:42px;text-align:center;margin-bottom:8px;">🛡</div>
+      <h3 style="margin:0 0 10px;font-size:20px;text-align:center;">Backup jetzt fällig</h3>
+      <p style="margin:0 0 18px;line-height:1.5;font-size:15px;text-align:center;">${label}<br>Sichere deine Lernkompasse jetzt als Datei — falls das Gerät zurückgesetzt wird oder du den Browser wechselst.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button id="bm-backup" style="padding:14px;border:none;border-radius:10px;background:var(--orange);color:white;font-size:16px;font-weight:600;cursor:pointer;">Backup jetzt erstellen</button>
+        <button id="bm-later" style="padding:12px;border:1.5px solid var(--gray);border-radius:10px;background:transparent;color:var(--text);font-size:14px;cursor:pointer;">Morgen erinnern</button>
+      </div>
+    </div>`;
+  document.body.appendChild(m);
+  document.getElementById('bm-backup').onclick = () => { exportBackup(); m.remove(); };
+  document.getElementById('bm-later').onclick  = () => { m.remove(); };
 }
 
 // ═══════════════════════════════════════════════
@@ -4641,6 +4743,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // IndexedDB: Daten wiederherstellen falls localStorage leer
   tryRestoreFromIDB();
+  // Storage-Persistenz anfordern (schützt vor iOS-Eviction)
+  requestPersistentStorage();
+  // Quota-Monitor (warnt platform-aware)
+  checkStorageQuota();
 });
 </script>
 </body>

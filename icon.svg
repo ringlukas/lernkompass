@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#1c2038"/>
+      <stop offset="60%" stop-color="#12141f"/>
+      <stop offset="100%" stop-color="#0a0a12"/>
+    </radialGradient>
+    <linearGradient id="nNeedle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5b030"/>
+      <stop offset="50%" stop-color="#e8920a"/>
+      <stop offset="100%" stop-color="#c07000"/>
+    </linearGradient>
+    <linearGradient id="sNeedle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5080b8"/>
+      <stop offset="100%" stop-color="#2a4a70"/>
+    </linearGradient>
+    <linearGradient id="ringG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8920a" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#c07800" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#e8920a" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+    </filter>
+    <filter id="nGlow">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#e8920a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Hintergrund mit abgerundeten Ecken (iOS-Style) -->
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#bg)"/>
+
+  <!-- Subtiles Dot-Pattern -->
+  <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="10" cy="10" r="0.5" fill="#ffffff" opacity="0.04"/>
+  </pattern>
+  <rect width="512" height="512" rx="112" ry="112" fill="url(#dots)"/>
+
+  <!-- Glow hinter Kompass -->
+  <circle cx="256" cy="230" r="100" fill="#e8920a" opacity="0.06" filter="url(#glow)"/>
+  <circle cx="256" cy="230" r="50" fill="#e8920a" opacity="0.1" filter="url(#glow)"/>
+
+  <!-- Dekorative Ringe -->
+  <circle cx="256" cy="230" r="170" fill="none" stroke="#e8920a" stroke-opacity="0.04" stroke-width="0.8"/>
+  <circle cx="256" cy="230" r="220" fill="none" stroke="#7a9ec4" stroke-opacity="0.025" stroke-width="0.5"/>
+
+  <!-- Kompass -->
+  <g transform="translate(256, 230)">
+    <!-- Äußerer Ring -->
+    <circle cx="0" cy="0" r="105" fill="none" stroke="url(#ringG)" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="109" fill="none" stroke="#e8920a" stroke-opacity="0.08" stroke-width="0.5"/>
+
+    <!-- Haupt-Ticks (N/S/O/W) -->
+    <line x1="0" y1="-105" x2="0" y2="-88" stroke="#e8920a" stroke-opacity="0.8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="105" y1="0" x2="88" y2="0" stroke="#e8920a" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="0" y1="105" x2="0" y2="88" stroke="#e8920a" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="-105" y1="0" x2="-88" y2="0" stroke="#e8920a" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- 45°-Ticks -->
+    <line x1="74.2" y1="-74.2" x2="65" y2="-65" stroke="#e8920a" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round"/>
+    <line x1="74.2" y1="74.2" x2="65" y2="65" stroke="#e8920a" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-74.2" y1="74.2" x2="-65" y2="65" stroke="#e8920a" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round"/>
+    <line x1="-74.2" y1="-74.2" x2="-65" y2="-65" stroke="#e8920a" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Innerer Ring -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#e8920a" stroke-opacity="0.15" stroke-width="1.2"/>
+
+    <!-- Nadeln -->
+    <g filter="url(#nGlow)">
+      <polygon points="0,-78 -12,0 0,-16 12,0" fill="url(#nNeedle)"/>
+      <polygon points="0,78 -12,0 0,16 12,0" fill="url(#sNeedle)" opacity="0.85"/>
+    </g>
+
+    <!-- Zentrum -->
+    <circle cx="0" cy="0" r="10" fill="#e8920a" opacity="0.2" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="7" fill="#e8920a"/>
+    <circle cx="0" cy="0" r="3.5" fill="#1c2038"/>
+    <circle cx="0" cy="0" r="1.8" fill="#e8920a" opacity="0.5"/>
+
+    <!-- N -->
+    <text x="0" y="-118" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="800" fill="#e8920a" opacity="0.8" letter-spacing="1">N</text>
+  </g>
+
+  <!-- LERNKOMPASS Text -->
+  <text x="256" y="390" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" font-weight="900" letter-spacing="6" fill="#e8920a" opacity="0.9">LERNK<tspan fill="#e8920a">O</tspan>MPASS</text>
+
+  <!-- Roter Faden (subtile Linie vom Kompass zum Text) -->
+  <line x1="256" y1="340" x2="256" y2="365" stroke="#e74c3c" stroke-opacity="0.4" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Tagline -->
+  <text x="256" y="420" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="4" fill="#e74c3c" opacity="0.5">DEIN ROTER FADEN</text>
+</svg>
