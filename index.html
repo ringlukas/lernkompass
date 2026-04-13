@@ -3974,6 +3974,8 @@ const Draw = (() => {
   let isDrawing      = false;
   let activePointerId = null; // Pointer-ID des laufenden Stiftzugs
   let lastStrokeEndTime = 0;  // Zeitstempel des letzten pointerup (für Fallback-Erkennung)
+  let lastPenTime    = 0;     // Palm-Rejection: Zeitstempel des letzten Pen-Events
+  const PALM_REJECT_MS = 500; // Touch-Events innerhalb dieser Zeit nach Pen-Event unterdrücken
   let currentPts     = []; // [[x, y, pressure], ...]
   let mode           = 'pen'; // 'pen' | 'marker' | 'eraser'
 
@@ -4037,6 +4039,11 @@ const Draw = (() => {
     tempCanvas.addEventListener('pointermove',   onMove,   opts);
     tempCanvas.addEventListener('pointerup',     onUp,     opts);
     tempCanvas.addEventListener('pointercancel', onCancel, opts);
+    // pointerrawupdate: höhere Sample-Rate (120 Hz auf iPad Pro) → geringere gefühlte Latenz.
+    // Nur wenn verfügbar; onMove dedupliziert (Punkte mit < 0.5 px Abstand werden verworfen).
+    if ('onpointerrawupdate' in tempCanvas) {
+      tempCanvas.addEventListener('pointerrawupdate', onMove, opts);
+    }
     // pointerleave absichtlich NICHT als onUp — würde auf iOS Striche zerschneiden
   }
 
@@ -4055,7 +4062,13 @@ const Draw = (() => {
 
   function onDown(e) {
     // Nur Apple Pencil (pen) und Maus (mouse) zeichnen — Finger navigieren (zoom, scroll, tap)
-    if (e.pointerType === 'touch') return;
+    if (e.pointerType === 'touch') {
+      // Palm-Rejection: Touch-Events innerhalb 500 ms nach einem Pen-Event
+      // zusätzlich preventDefault, damit iPadOS keine Gestenerkennung startet.
+      if (performance.now() - lastPenTime < PALM_REJECT_MS) e.preventDefault();
+      return;
+    }
+    if (e.pointerType === 'pen') lastPenTime = performance.now();
     e.preventDefault();
     // KEIN setPointerCapture — Apple Pencil hat auf iPadOS implizite Capture.
     // Explizites setPointerCapture kann bei schnellem Ab-/Ansetzen dazu führen,
@@ -4080,16 +4093,18 @@ const Draw = (() => {
   }
 
   function onMove(e) {
-    if (e.pointerType === 'touch') return;
+    if (e.pointerType === 'touch') {
+      if (performance.now() - lastPenTime < PALM_REJECT_MS) e.preventDefault();
+      return;
+    }
+    if (e.pointerType === 'pen') lastPenTime = performance.now();
 
     // ── Fallback: verpasstes pointerdown nachholen ──────────────────
     // iPadOS Safari kann bei schnellem Ab-/Ansetzen des Apple Pencil
-    // das pointerdown-Event verschlucken. Wenn wir einen pointermove
-    // mit Druck > 0 bekommen aber NICHT zeichnen, wurde das pointerdown
-    // verpasst → Zeichenvorgang sofort starten.
-    // Guard: Verzögerte pointermove-Events des gerade beendeten Strichs
-    // (< 30 ms nach pointerup) ignorieren, um Geister-Striche zu vermeiden.
-    if (!isDrawing && e.pressure > 0 && (performance.now() - lastStrokeEndTime > 30)) {
+    // oder bei aufliegendem Handballen das pointerdown verschlucken.
+    // Zusatzfall: erstes pointermove des Pencils kommt mit pressure === 0,
+    // wenn der Handballen zuerst aufliegt. Deshalb pressure > 0 ODER pointerType === 'pen'.
+    if (!isDrawing && (e.pressure > 0 || e.pointerType === 'pen') && (performance.now() - lastStrokeEndTime > 30)) {
       onDown(e);
       return;
     }
@@ -4098,7 +4113,7 @@ const Draw = (() => {
     // iPadOS kann beim schnellen Ab-/Ansetzen BEIDE Events verschlucken.
     // isDrawing ist noch true (alter Strich), aber pointerId hat gewechselt
     // (neuer Strich). → Alten Strich committen, neuen starten.
-    if (isDrawing && e.pointerId !== activePointerId && e.pressure > 0) {
+    if (isDrawing && e.pointerId !== activePointerId && (e.pressure > 0 || e.pointerType === 'pen')) {
       if (mode === 'marker' && currentPts.length > 0) commitMarker();
       tCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
       currentPts      = [];
@@ -4136,7 +4151,11 @@ const Draw = (() => {
     // Handflächen/Finger (touch) dürfen einen laufenden Stiftstrich NICHT beenden!
     // Ohne diesen Filter: Palm liegt auf dem iPad → pointerup(touch) feuert → isDrawing=false
     // → alle weiteren onMove-Events des Stifts werden ignoriert → LÜCKE im Strich.
-    if (e.pointerType === 'touch') return;
+    if (e.pointerType === 'touch') {
+      if (performance.now() - lastPenTime < PALM_REJECT_MS) e.preventDefault();
+      return;
+    }
+    if (e.pointerType === 'pen') lastPenTime = performance.now();
     // Verzögerter pointerup des VORHERIGEN Strichs (andere pointerId) ignorieren:
     // iOS liefert pointerup oft erst nach dem nächsten pointerdown → ohne diesen Guard
     // würde isDrawing=false gesetzt und der neue Strich stirbt sofort ab.
