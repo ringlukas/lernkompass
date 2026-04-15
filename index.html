@@ -9,6 +9,9 @@
   <meta name="theme-color" content="#12141f">
   <link rel="manifest" href='data:application/manifest+json,{"name":"Lernkompass","short_name":"Lernkompass","description":"Dein roter Faden im Unterricht","start_url":".","display":"standalone","background_color":"%2312141f","theme_color":"%2312141f","orientation":"portrait","icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}'>
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="author" content="Lukas Ring">
+  <meta name="copyright" content="© 2026 Lukas Ring">
+  <meta name="license" content="CC BY-NC-SA 4.0 — https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">
   <title>Lernkompass – FOSBOS Ingolstadt</title>
   <style>
     /* ===== VARIABLEN ===== */
@@ -1593,7 +1596,10 @@
     <div class="delete-zone">
       <button class="btn-delete-entry" onclick="deleteCurrentEntry()">Diesen Lernkompass löschen</button>
     </div>
-    <div class="app-footer">Lernkompass V5 · FOSBOS Ingolstadt · Daten werden nur lokal auf diesem Gerät gespeichert.</div>
+    <div class="app-footer">
+      Lernkompass V5 · FOSBOS Ingolstadt · Daten werden nur lokal auf diesem Gerät gespeichert.<br>
+      © 2026 Lukas Ring · <a href="https://lukasring.de" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">lukasring.de</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">CC BY-NC-SA 4.0</a>
+    </div>
 
   </main>
   </div><!-- /editor-content-wrap -->
@@ -1934,15 +1940,6 @@ function getDemoLinks() {
     { id: 'demoL01', name: 'DeepL Übersetzer', url: 'https://www.deepl.com/translator', fach: '', created: now },
     { id: 'demoL02', name: 'Duden Wörterbuch', url: 'https://www.duden.de', fach: '', created: now },
     { id: 'demoL03', name: 'Wikipedia', url: 'https://de.wikipedia.org', fach: '', created: now },
-    { id: 'demoL04', name: 'Cambridge Dictionary', url: 'https://dictionary.cambridge.org', fach: 'Englisch', created: now },
-    { id: 'demoL05', name: 'Linguee (Kontextsuche EN↔DE)', url: 'https://www.linguee.de', fach: 'Englisch', created: now },
-    { id: 'demoL06', name: 'BBC Learning English', url: 'https://www.bbc.co.uk/learningenglish', fach: 'Englisch', created: now },
-    { id: 'demoL07', name: 'Bundeszentrale für pol. Bildung', url: 'https://www.bpb.de', fach: 'VWL', created: now },
-    { id: 'demoL08', name: 'Statista (Statistiken & Grafiken)', url: 'https://de.statista.com', fach: 'VWL', created: now },
-    { id: 'demoL09', name: 'Tagesschau Wirtschaft', url: 'https://www.tagesschau.de/wirtschaft', fach: 'VWL', created: now },
-    { id: 'demoL10', name: 'GeoGebra Grafikrechner', url: 'https://www.geogebra.org/graphing', fach: 'Mathematik', created: now },
-    { id: 'demoL11', name: 'Mathe-Abi Bayern (FOS/BOS)', url: 'https://www.abiturloesung.de/bayern/fos', fach: 'Mathematik', created: now },
-    { id: 'demoL12', name: 'Digitale Schule Bayern', url: 'https://digitale-schule-bayern.de', fach: '', created: now },
   ];
 }
 
@@ -1974,181 +1971,20 @@ function getDemoEntries() {
   }
 
   return [
-    // ── ENGLISCH (5 Stunden) ──
-    e('demo01', 14, 'Englisch', '01.03.2026', 'Introduction to Globalisation', {
+    e('tutorial01', 0, 'Beispiel', todayString(), 'So funktioniert der Lernkompass', {
       starred: true, kern_count: 2,
-      ziel_0: 'Ich kann den Begriff "globalisation" definieren und von "internationalisation" abgrenzen.',
-      ziel_1: 'Ich kann mindestens 3 Dimensionen der Globalisierung benennen (economic, cultural, political).',
-      ziel_2: 'Ich kann Vor- und Nachteile der Globalisierung gegenüberstellen.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: true,
-      kern_concept_0: 'What is Globalisation?',
-      kern_notiz_0_text: 'Definition: "The increasing interconnectedness of the world\'s economies, cultures and populations."\n\n3 Dimensionen:\n1. Economic – Handel, Investitionen, Lieferketten\n2. Cultural – Medien, Sprache, Konsumverhalten\n3. Political – internationale Organisationen (UN, WTO, EU)',
-      kern_concept_1: 'Pros & Cons',
-      kern_notiz_1_text: 'PRO:\n- Economic growth & job creation\n- Cultural exchange & diversity\n- Access to goods & knowledge\n\nCONTRA:\n- Exploitation of cheap labour\n- Loss of local culture & identity\n- Environmental damage through transport\n- Growing inequality (rich get richer)',
-      fehler_0_text: 'Globalisation ≠ Westernisation (häufiger Fehler in Essays)',
+      ziel_0: 'Ich weiß, wie ich einen Lernkompass anlege und was in die einzelnen Felder gehört.',
+      ziel_1: 'Ich kann eine Stunde so dokumentieren, dass ich sie in 2 Wochen noch verstehe.',
+      ziel_checked_0: true, ziel_checked_1: false,
+      kern_concept_0: 'Wozu der Lernkompass?',
+      kern_notiz_0_text: 'Der Lernkompass hilft dir, Unterricht nicht nur mitzuschreiben, sondern bewusst zu verarbeiten.\n\n3 Schritte pro Stunde:\n1. ZIELSETZUNG – Was soll ich lernen? (vor der Stunde / zu Beginn)\n2. KERN-INPUT – Was sind die wichtigsten Konzepte? (während der Stunde)\n3. CHECK-OUT – Was habe ich verstanden, was noch nicht? (am Ende)',
+      kern_concept_1: 'Tipps zur Nutzung',
+      kern_notiz_1_text: '• Trage IMMER zuerst Fach + Datum ein, damit du den Eintrag später wiederfindest.\n• Die Symbole oben schalten zwischen TASTATUR und STIFT um (falls du Apple Pencil hast).\n• Sterne (★) markieren wichtige Einträge – sie erscheinen im Filter.\n• Bei Fragen während der Stunde: unter OFFENE FRAGEN eintragen – hilft, sie nicht zu vergessen.\n• FEHLER-RADAR: typische Fehler notieren, die du NICHT mehr machen willst.',
+      fehler_0_text: 'Typischer Fehler: Lernkompass nur mitschreiben, nie wieder anschauen. → Wöchentlich kurz durchgehen!',
+      anwendung_text: 'Probier es einfach aus: Klicke unten auf "+" und lege einen eigenen Lernkompass für deine nächste Stunde an.\n\nDiesen Tutorial-Eintrag kannst du jederzeit über den 🗑-Button löschen.',
+      erkenntnis_text: 'Der Lernkompass ist kein Schönschrift-Heft – er ist DEIN Werkzeug. Schreib so, dass DU es verstehst.',
+      frage_naechste_text: 'Wie kann ich die App auf meinem iPad am besten nutzen? → Über "Teilen → Zum Home-Bildschirm" installieren!',
       komp_thema: true, komp_methode: true, komp_fach: false,
-      erkenntnis_text: 'Globalisierung ist nicht nur Wirtschaft – die kulturelle Dimension wird oft unterschätzt.',
-    }),
-    e('demo02', 12, 'Englisch', '03.03.2026', 'Sweatshops & Ethical Consumption', {
-      kern_count: 3,
-      ziel_0: 'Ich kann erklären, was ein Sweatshop ist und wo sie typischerweise vorkommen.',
-      ziel_1: 'Ich kann Pro- und Contra-Argumente zu Sweatshops gegenüberstellen.',
-      ziel_2: 'Ich kann einen Comment zum Thema "ethical consumption" strukturieren.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: false,
-      kern_concept_0: 'Sweatshops – Facts',
-      kern_notiz_0_text: '- Definition: Fabrik mit extrem niedrigen Löhnen, langen Arbeitszeiten, unsicheren Bedingungen\n- Hauptstandorte: Bangladesch, Kambodscha, Vietnam, Äthiopien\n- Rana Plaza 2013: 1.134 Tote → Wendepunkt in der öffentlichen Wahrnehmung',
-      kern_concept_1: 'The Debate',
-      kern_notiz_1_text: 'GEGEN Sweatshops:\n- Menschenrechtsverletzungen\n- Kinderarbeit\n- Gesundheitsschäden\n\nFÜR Sweatshops (kontrovers!):\n- Bessere Alternative zu Subsistenzlandwirtschaft?\n- Erster Schritt zur Industrialisierung\n- Ohne Nachfrage → Arbeitslosigkeit\n\n→ Die Frage ist nicht "Sweatshop ja/nein" sondern "Wie verbessern wir die Bedingungen?"',
-      kern_concept_2: 'Comment Structure',
-      kern_notiz_2_text: '1. Introduction: Hook + These\n2. Argument 1 (stärkstes PRO/CONTRA)\n3. Argument 2 + Beispiel\n4. Gegenargument + Entkräftung\n5. Conclusion: Eigene Position + Ausblick\n\nWichtig: IMMER beide Seiten zeigen, auch wenn man eine Position vertritt!',
-      fehler_0_text: '"I think" erst in der Conclusion – vorher neutrale Argumentation',
-      fehler_1_text: 'Comment ≠ Essay! Comment hat eine klare eigene Meinung.',
-      anwendung_text: 'Comment-Übung (Outline):\n\nThese: "Consumers in rich countries have a moral obligation to avoid products made in sweatshops."\n\n1. Intro: Fast Fashion Statistik → 92 Mio. Tonnen Textilmüll/Jahr\n2. Pro: Nachfrage bestimmt Angebot → Konsumenten haben Macht\n3. Pro: Transparenz durch Apps (Good On You, Fair Wear)\n4. Contra: Boykott schadet den Arbeiter*innen am meisten\n5. Conclusion: Nicht boykottieren, sondern gezielt fair kaufen + politischen Druck aufbauen',
-      komp_thema: true, komp_methode: false, komp_fach: false,
-    }),
-    e('demo03', 7, 'Englisch', '08.03.2026', 'Rhetorical Devices in Political Speeches', {
-      kern_count: 3,
-      ziel_0: 'Ich kann mindestens 5 rhetorische Stilmittel benennen und erklären.',
-      ziel_1: 'Ich kann rhetorische Mittel in einem authentischen Text identifizieren.',
-      ziel_2: 'Ich kann die Wirkung eines Stilmittels auf den Leser/Zuhörer beschreiben.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: false,
-      kern_concept_0: 'Repetition & Anaphora',
-      kern_notiz_0_text: '- Repetition: Wiederholung einzelner Wörter/Phrasen → Betonung, Einprägsamkeit\n- Anaphora: Wiederholung am Satzanfang ("I have a dream …")\n- Wirkung: rhythmisch, emotional, leicht zu merken',
-      kern_concept_1: 'Metaphor & Imagery',
-      kern_notiz_1_text: '- Metaphor: Vergleich OHNE "like/as" ("a sea of troubles")\n- Simile: MIT "like/as" ("brave as a lion")\n- Imagery: Sinneseindrücke durch Sprache erzeugen\n- Merke: Metaphern machen abstrakte Ideen greifbar',
-      kern_concept_2: 'Rhetorical Questions & Tricolon',
-      kern_notiz_2_text: '- Rhetorical question: Frage ohne erwartete Antwort → regt zum Nachdenken an\n- Tricolon: Dreiergruppe ("government of the people, by the people, for the people")\n- Rule of three: Das Gehirn liebt Muster aus 3',
-      fehler_0_text: 'Metaphor ≠ Simile! Simile hat immer "like" oder "as"',
-      fehler_1_text: 'Alliteration bezieht sich auf den LAUT, nicht den Buchstaben',
-      anwendung_text: 'Analyse: Obama\'s "Yes We Can" Speech (2008)\n\n1. "Yes we can" → Repetition/Anaphora (12x wiederholt)\n2. "the true strength of our nation" → Metaphor (Stärke = physisch → abstrakt)\n3. "Was it hard? … Did you doubt?" → Rhetorical questions\n4. "block by block, brick by brick, calloused hand by calloused hand" → Tricolon + Imagery\n\nWirkung insgesamt: motivierend, emotional, vereinend',
-      schwierigkeiten_text: 'Unterschied Metaphor vs. Symbol ist mir noch nicht ganz klar.',
-      erkenntnis_text: 'Rhetorische Mittel wirken oft kombiniert — ein guter Redner nutzt nie nur eins.',
-      frage_naechste_text: 'Wie analysiert man die Struktur einer ganzen Rede (nicht nur einzelne Stilmittel)?',
-      komp_thema: true, komp_methode: true, komp_fach: false,
-    }),
-    e('demo04', 5, 'Englisch', '10.03.2026', 'Analysing a Speech – Structure & Argument', {
-      kern_count: 2,
-      ziel_0: 'Ich kann den Aufbau einer Rede in Einleitung, Hauptteil und Schluss gliedern.',
-      ziel_1: 'Ich kann die zentrale These (claim) einer Rede formulieren.',
-      ziel_2: 'Ich kann zwischen Fakten, Meinungen und Appellen unterscheiden.',
-      ziel_3: 'Ich kann eine strukturierte Redeanalyse schreiben.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: true, ziel_checked_3: false,
-      kern_concept_0: 'Speech Structure',
-      kern_notiz_0_text: 'Typischer Aufbau:\n1. Hook – Aufmerksamkeit gewinnen (Frage, Zitat, Anekdote)\n2. Thesis – Zentrale Aussage/Forderung\n3. Body – Argumente + Belege (facts, examples, statistics)\n4. Conclusion – Zusammenfassung + Call to Action\n\nACHTUNG: Nicht jede Rede folgt diesem Schema exakt!',
-      kern_concept_1: 'Fact vs. Opinion vs. Appeal',
-      kern_notiz_1_text: '- Fact: überprüfbar, objektiv ("Unemployment is at 3.5%")\n- Opinion: subjektive Einschätzung ("This is the greatest challenge")\n- Appeal: emotionaler Appell ("Think of your children\'s future")\n\nGute Redner mischen alle drei → Glaubwürdigkeit + Emotion',
-      fehler_0_text: 'Summary ≠ Analysis! Nicht nur nacherzählen, sondern Wirkung erklären.',
-      fehler_1_text: 'Zitate immer mit Zeilenangabe belegen',
-      erkenntnis_text: 'Die These steht oft NICHT im ersten Satz — manchmal erst nach dem Hook.',
-      komp_thema: true, komp_methode: false, komp_fach: false,
-    }),
-    e('demo05', 2, 'Englisch', '13.03.2026', 'Writing a Speech Analysis (Klausurvorbereitung)', {
-      starred: true, kern_count: 2,
-      ziel_0: 'Ich kann eine vollständige Speech Analysis in 90 Minuten schreiben.',
-      ziel_1: 'Ich kenne die Bewertungskriterien und kann mich daran orientieren.',
-      ziel_2: 'Ich kann Einleitung und Schluss einer Analyse sicher formulieren.',
-      ziel_checked_0: false, ziel_checked_1: true, ziel_checked_2: false,
-      kern_concept_0: 'Analysis Template',
-      kern_notiz_0_text: 'INTRODUCTION:\n- Textsorte, Autor, Datum, Thema, Quelle\n- "In his/her speech … [speaker] argues that …"\n\nMAIN BODY:\n- Chronologisch ODER nach Stilmitteln\n- Jeder Absatz: Device → Zitat → Wirkung\n- Linking words: "Furthermore", "Moreover", "In contrast"\n\nCONCLUSION:\n- Gesamtwirkung zusammenfassen\n- Eigene Einschätzung der Überzeugungskraft\n- KEIN neues Argument!',
-      kern_concept_1: 'Bewertungskriterien',
-      kern_notiz_1_text: '1. Inhalt (40%): Vollständigkeit, Textverständnis, Argumentation\n2. Sprache (40%): Ausdruck, Grammatik, Fachsprache\n3. Aufbau (20%): Struktur, Absätze, roter Faden\n\nTypische Fehler:\n- Zu viel Nacherzählung, zu wenig Analyse\n- Stilmittel ohne Wirkungsbeschreibung\n- Fehlende Zitate / falsche Zitierweise',
-      fehler_0_text: 'WIRKUNG immer beschreiben! "The author uses a metaphor" reicht nicht.',
-      fehler_1_text: 'Conclusion darf keine neuen Argumente bringen',
-      anwendung_text: 'Übungs-Einleitung:\n\n"The speech \'How Dare You\', delivered by Greta Thunberg at the United Nations Climate Action Summit on 23 September 2019, is a passionate appeal to world leaders to take immediate action against climate change. In her speech, Thunberg accuses political leaders of inaction and argues that their empty promises are destroying the future of young generations. The following analysis will examine the rhetorical strategies Thunberg employs to convey her message."',
-      schwierigkeiten_text: 'Zeitmanagement: 90 Minuten sind knapp für Introduction + 3 Body Paragraphs + Conclusion.',
-      komp_thema: true, komp_methode: false, komp_fach: true,
-    }),
-
-    // ── VWL (3 Stunden) ──
-    e('demo06', 10, 'VWL', '05.03.2026', 'Wirtschaftskreislauf – einfach und erweitert', {
-      kern_count: 2,
-      ziel_0: 'Ich kann den einfachen Wirtschaftskreislauf zeichnen und erklären.',
-      ziel_1: 'Ich kann die Rolle von Staat, Banken und Ausland im erweiterten Kreislauf beschreiben.',
-      ziel_2: 'Ich kann Geldströme und Güterströme unterscheiden.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: true,
-      kern_concept_0: 'Einfacher Kreislauf',
-      kern_notiz_0_text: 'Zwei Pole: Haushalte ↔ Unternehmen\n\nGüterstrom (real):\n- HH → U: Arbeitskraft (Faktormarkt)\n- U → HH: Konsumgüter (Gütermarkt)\n\nGeldstrom (monetär):\n- U → HH: Löhne, Gehälter\n- HH → U: Konsumausgaben\n\nGeschlossener Kreislauf: Was die HH ausgeben, nehmen die U ein → zahlen Löhne → HH geben aus → …',
-      kern_concept_1: 'Erweiterter Kreislauf',
-      kern_notiz_1_text: 'Neue Akteure:\n1. STAAT: Steuern (T) und Staatsausgaben (G), Transferzahlungen\n2. BANKEN: Sparen (S) und Investitionen (I), Kredite\n3. AUSLAND: Export (Ex) und Import (Im)\n\nGleichgewichtsbedingung:\nS + T + Im = I + G + Ex\n(Abflüsse = Zuflüsse)',
-      fehler_0_text: 'Geldstrom und Güterstrom laufen ENTGEGENGESETZT!',
-      fehler_1_text: 'Banken ≠ Staat! Zentralbank ist Sonderfall.',
-      anwendung_text: 'Beispiel Deutschland 2024:\n- BIP ≈ 4.100 Mrd. €\n- Staatsquote ≈ 48% → Staat gibt fast die Hälfte des BIP aus\n- Sparquote der Haushalte ≈ 11%\n- Exportquote ≈ 47% → Deutschland extrem exportabhängig',
-      erkenntnis_text: 'Der Kreislauf zeigt: Sparen ist gut für den Einzelnen, aber zu viel Sparen schadet der Gesamtwirtschaft.',
-      komp_thema: true, komp_methode: true, komp_fach: true,
-    }),
-    e('demo07', 3, 'VWL', '12.03.2026', 'Preisbildung auf dem vollkommenen Markt', {
-      kern_count: 3,
-      ziel_0: 'Ich kann die Annahmen des vollkommenen Marktes benennen.',
-      ziel_1: 'Ich kann Angebots- und Nachfragekurve zeichnen und erklären.',
-      ziel_2: 'Ich kann das Marktgleichgewicht grafisch und rechnerisch bestimmen.',
-      ziel_3: 'Ich kann erklären was bei Über- bzw. Unterangebot passiert.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: false,
-      kern_concept_0: 'Vollkommener Markt – 5 Bedingungen',
-      kern_notiz_0_text: '1. Homogene Güter (alle Produkte sind identisch)\n2. Viele Anbieter & Nachfrager (keiner hat Marktmacht)\n3. Vollständige Markttransparenz (alle kennen alle Preise)\n4. Keine Präferenzen (räumlich, zeitlich, persönlich, sachlich)\n5. Unendlich schnelle Reaktion (sofortige Anpassung)\n\n→ In der Realität NIE vollständig erfüllt, aber wichtiges Modell!',
-      kern_concept_1: 'Angebot & Nachfrage',
-      kern_notiz_1_text: 'Nachfragekurve: fallend (↗ Preis → ↘ Menge)\n- Gesetz der Nachfrage: Je höher der Preis, desto weniger wird gekauft\n\nAngebotskurve: steigend (↗ Preis → ↗ Menge)\n- Gesetz des Angebots: Je höher der Preis, desto mehr wird angeboten\n\nVerschiebung der Kurven ≠ Bewegung auf der Kurve!',
-      kern_concept_2: 'Marktgleichgewicht',
-      kern_notiz_2_text: 'Gleichgewichtspreis pG: Angebot = Nachfrage\n\nÜberangebot (p > pG):\n→ Angebotsmenge > Nachfragemenge → Preis sinkt\n\nÜbernachfrage (p < pG):\n→ Nachfragemenge > Angebotsmenge → Preis steigt\n\nMarkt pendelt sich automatisch beim Gleichgewicht ein ("unsichtbare Hand")',
-      fehler_0_text: 'Verschiebung der Kurve ≠ Bewegung AUF der Kurve!',
-      fehler_1_text: 'Gleichgewichtspreis heißt NICHT, dass alle zufrieden sind',
-      fehler_2_text: 'Nachfragekurve zeigt Zahlungsbereitschaft, nicht tatsächliche Käufe',
-      anwendung_text: 'Rechenbeispiel:\nNachfrage: QN = 100 − 2p\nAngebot: QA = −20 + 4p\n\nGleichgewicht: QN = QA\n100 − 2p = −20 + 4p\n120 = 6p\npG = 20 €\n\nEinsetzen: QG = 100 − 2·20 = 60 Stück\n\n→ Gleichgewichtspreis: 20 €, Gleichgewichtsmenge: 60 Stück',
-      komp_thema: true, komp_methode: false, komp_fach: false,
-    }),
-    e('demo08', 0, 'VWL', '15.03.2026', 'Staatliche Eingriffe in die Preisbildung', {
-      kern_count: 3,
-      ziel_0: 'Ich kann Höchstpreis und Mindestpreis definieren und grafisch darstellen.',
-      ziel_1: 'Ich kann die Folgen staatlicher Preiseingriffe beschreiben.',
-      ziel_2: 'Ich kann aktuelle Beispiele für Höchst- und Mindestpreise nennen.',
-      ziel_checked_0: false, ziel_checked_1: false, ziel_checked_2: false,
-      kern_concept_0: 'Höchstpreis',
-      kern_notiz_0_text: 'Definition: Staat legt Obergrenze fest (pmax < pG)\n→ Preis darf nicht höher sein\n\nFolge: Nachfrage > Angebot → Übernachfrage / Mangel\n\nBeispiele:\n- Mietpreisbremse (Wohnungsmarkt)\n- Preisdeckel auf Energie (2022/23)\n\nProblem: Schwarzmarkt, sinkende Qualität, weniger Angebot langfristig',
-      kern_concept_1: 'Mindestpreis',
-      kern_notiz_1_text: 'Definition: Staat legt Untergrenze fest (pmin > pG)\n→ Preis darf nicht niedriger sein\n\nFolge: Angebot > Nachfrage → Überangebot / Überschuss\n\nBeispiele:\n- Mindestlohn (12,82 €/h seit 2025)\n- EU-Agrarsubventionen (Butterberg, Milchsee)\n\nProblem: Arbeitslosigkeit (bei Mindestlohn umstritten!), Überproduktion',
-      kern_concept_2: 'Pro & Contra Staatseingriffe',
-      kern_notiz_2_text: 'PRO:\n- Schutz sozial Schwächerer\n- Verhinderung von Ausbeutung\n- Daseinsvorsorge (Wohnen, Energie, Nahrung)\n\nCONTRA:\n- Marktverzerrung → Fehlallokation\n- Bürokratie & Kontrollkosten\n- Schwarzmärkte & Umgehungsstrategien\n\n→ Abwägung: Sozialer Schutz vs. Markteffizienz',
-      fehler_0_text: 'Höchstpreis ist UNTER dem Gleichgewicht, Mindestpreis DARÜBER!',
-      fehler_1_text: 'Mindestlohn ist ein MINDESTpreis (für Arbeit), kein Höchstpreis!',
-    }),
-
-    // ── DEUTSCH (1 Stunde) ──
-    e('demo09', 8, 'Deutsch', '07.03.2026', 'Erörterung – Aufbau und Argumentation', {
-      kern_count: 2,
-      ziel_0: 'Ich kann den Unterschied zwischen linearer und dialektischer Erörterung erklären.',
-      ziel_1: 'Ich kann eine Argumentationskette aufbauen (These → Argument → Beispiel).',
-      ziel_2: 'Ich kann eine Einleitung mit Hinführung zum Thema schreiben.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: false,
-      kern_concept_0: 'Linear vs. Dialektisch',
-      kern_notiz_0_text: 'Lineare Erörterung (Steigernde):\n- NUR eine Seite (Pro ODER Contra)\n- Argumente vom schwächsten zum stärksten\n- Signal: "Erörtern Sie die Vorteile …"\n\nDialektische Erörterung (Antithetische):\n- Beide Seiten → eigene Position\n- Sanduhr- oder Pingpong-Prinzip\n- Signal: "Erörtern Sie, ob …", "Setzen Sie sich auseinander …"\n\nACHTUNG: Aufgabenstellung genau lesen!',
-      kern_concept_1: 'Argumentationskette',
-      kern_notiz_1_text: 'Aufbau eines Arguments:\n1. THESE: Behauptung aufstellen\n2. ARGUMENT: Begründung (Warum?)\n3. BEISPIEL: Beleg, Statistik, Erfahrung\n4. RÜCKFÜHRUNG: Bezug zur These\n\nBeispiel:\nThese: "Social Media schadet Jugendlichen."\nArgument: "Der ständige Vergleich mit idealisierten Bildern erzeugt Druck."\nBeispiel: "Studien zeigen, dass Instagram-Nutzung mit steigenden Depressionsraten bei 14–19-Jährigen korreliert."\nRückführung: "Dies belegt, dass Social Media das psychische Wohlbefinden negativ beeinflusst."',
-      fehler_0_text: 'Beispiel ≠ Argument! "Mein Freund findet das auch" ist kein Argument.',
-      fehler_1_text: 'Nie mit "Ich möchte erörtern, ob …" anfangen → langweilig!',
-      anwendung_text: 'Einleitungs-Übung:\n\nThema: "Sollte das Smartphone im Unterricht erlaubt sein?"\n\nV1 (zu direkt): "In dieser Erörterung geht es um Smartphones im Unterricht."\n\nV2 (besser): "97 Prozent aller Jugendlichen in Deutschland besitzen ein Smartphone – ein Gerät, das im Alltag unverzichtbar geworden ist. Doch sobald die Schulglocke läutet, soll es in der Tasche verschwinden. Ob ein generelles Handyverbot im Unterricht noch zeitgemäß ist, soll im Folgenden erörtert werden."',
-      erkenntnis_text: 'Eine gute Einleitung ist wie ein Filmtrailer — sie macht neugierig, ohne alles zu verraten.',
-      komp_thema: true, komp_methode: false, komp_fach: false,
-    }),
-
-    // ── MATHEMATIK (1 Stunde) ──
-    e('demo10', 6, 'Mathematik', '09.03.2026', 'Ableitungsregeln – Ketten- und Produktregel', {
-      kern_count: 3,
-      ziel_0: 'Ich kann die Kettenregel anwenden.',
-      ziel_1: 'Ich kann die Produktregel anwenden.',
-      ziel_2: 'Ich kann erkennen, wann welche Regel anzuwenden ist.',
-      ziel_3: 'Ich kann kombinierte Aufgaben (Ketten- + Produktregel) lösen.',
-      ziel_checked_0: true, ziel_checked_1: true, ziel_checked_2: false, ziel_checked_3: false,
-      kern_concept_0: 'Kettenregel',
-      kern_notiz_0_text: 'Formel: [f(g(x))]′ = f′(g(x)) · g′(x)\n\n"Äußere Ableitung MAL innere Ableitung"\n\nBeispiel:\nf(x) = (3x + 1)⁴\n→ äußere: u⁴ → 4u³\n→ innere: 3x + 1 → 3\n→ f′(x) = 4(3x+1)³ · 3 = 12(3x+1)³\n\nWann? Immer wenn eine Funktion IN einer anderen steckt!',
-      kern_concept_1: 'Produktregel',
-      kern_notiz_1_text: 'Formel: [u(x) · v(x)]′ = u′(x)·v(x) + u(x)·v′(x)\n\n"1. ableiten · 2. stehen lassen + 1. stehen lassen · 2. ableiten"\n\nBeispiel:\nf(x) = x² · sin(x)\nu = x² → u′ = 2x\nv = sin(x) → v′ = cos(x)\nf′(x) = 2x·sin(x) + x²·cos(x)\n\nWann? Immer wenn zwei Funktionen MULTIPLIZIERT werden!',
-      kern_concept_2: 'Erkennungsmuster',
-      kern_notiz_2_text: 'Checkliste:\n1. Summe/Differenz? → Gliedweise ableiten\n2. Konstanter Faktor? → Faktor bleibt stehen\n3. Produkt zweier Funktionen? → PRODUKTREGEL\n4. Funktion in Funktion? → KETTENREGEL\n5. Beides? → Erst Produktregel, dann Kettenregel für die Teile\n\nHäufigster Fehler: Kettenregel vergessen bei e^(2x) → NICHT einfach e^(2x)!',
-      fehler_0_text: 'e^(2x) ableiten: NICHT e^(2x) sondern 2·e^(2x) (Kettenregel!)',
-      fehler_1_text: 'Produktregel bei x·e^x nicht vergessen — ist NICHT einfach e^x',
-      fehler_2_text: 'sin(x²) ≠ sin(x)·sin(x) !!! Das ist Kettenregel, nicht Produktregel.',
-      anwendung_text: 'Aufgabe: f(x) = x · e^(2x)\n\n→ Produkt: u = x, v = e^(2x)\n→ u′ = 1\n→ v′ = 2·e^(2x) [Kettenregel!]\n\nf′(x) = 1·e^(2x) + x·2·e^(2x)\n       = e^(2x) + 2x·e^(2x)\n       = e^(2x)·(1 + 2x)     [ausklammern]',
-      schwierigkeiten_text: 'Kombinierte Aufgaben (Produkt + Kette gleichzeitig) sind noch unsicher.',
-      komp_thema: true, komp_methode: false, komp_fach: false,
     }),
   ];
 }
@@ -2156,14 +1992,7 @@ function getDemoEntries() {
 function getDemoAufgaben() {
   const now = Date.now();
   return [
-    { id: 'demoA1', text: 'Speech Analysis zu Greta Thunberg UN Speech schreiben (300 Wörter)', fach: 'Englisch', due: '2026-03-19', done: false, created: now },
-    { id: 'demoA2', text: 'Vocabulary List Unit 7 lernen (Test am Freitag)', fach: 'Englisch', due: '2026-03-21', done: false, created: now },
-    { id: 'demoA3', text: 'Marktgleichgewicht: Aufgaben S. 84 Nr. 3–5', fach: 'VWL', due: '2026-03-18', done: false, created: now },
-    { id: 'demoA4', text: 'Ableitungen: Übungsblatt Nr. 12–18 (Ketten- und Produktregel)', fach: 'Mathematik', due: '2026-03-17', done: false, created: now },
-    { id: 'demoA5', text: 'Erörterung: Einleitung + Schluss zum Übungsthema schreiben', fach: 'Deutsch', due: '2026-03-20', done: false, created: now },
-    { id: 'demoA6', text: 'Comment "Ethical Consumption" Entwurf korrigieren', fach: 'Englisch', due: '2026-03-18', done: false, created: now },
-    { id: 'demoA7', text: 'Stylistic Devices Übersicht ins Heft übertragen', fach: 'Englisch', due: '', done: true, created: now - 86400000*5 },
-    { id: 'demoA8', text: 'Wirtschaftskreislauf-Diagramm sauber zeichnen', fach: 'VWL', due: '', done: true, created: now - 86400000*3 },
+    { id: 'demoA1', text: 'Beispielaufgabe: Tippe hier deine nächste Hausaufgabe ein oder lösche diesen Eintrag.', fach: '', due: '', done: false, created: now },
   ];
 }
 function saveEntries() {
